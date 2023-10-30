@@ -1,0 +1,15 @@
+npm install webpack@4.44.2
+npm install babel-loader@8.1.0
+
+git checkout
+git remote update origin --prune
+git branch -a
+
+
+2. Open terminal and paste these as described :
+
+Linux & Mac OS (windows git bash)-
+
+export NODE_OPTIONS=--openssl-legacy-provider
+
+"start": "react-scripts --openssl-legacy-provider start"
