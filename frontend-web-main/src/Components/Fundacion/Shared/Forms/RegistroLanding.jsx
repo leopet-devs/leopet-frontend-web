@@ -45,7 +45,7 @@ const RegistroLanding = () => {
               errores.ruc = 'Por favor ingresar el RUC';
             } else if (!/^[0-9]{13,14}$/.test(valores.ruc)) {
               errores.ruc =
-                'El ruc solo puede contener números y 13 o 14 números.';
+                'El ruc solo puede contener 13 números.';
             }
 
             // Valacion direccion
