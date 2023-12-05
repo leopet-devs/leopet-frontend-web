@@ -28,6 +28,7 @@ export async function login(props, { apiUrl }) {
     throw error;
   }
   const { result } = await response.json();
+  await(console.log(result));
   return {
     ...result,
     apiUrl: GLOBALCONFIG.EndpointBackHost+':'+

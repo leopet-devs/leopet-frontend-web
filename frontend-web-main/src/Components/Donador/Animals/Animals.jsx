@@ -14,7 +14,7 @@ import './Animals.scss';
 import imgPerro from './../../../Assets/icons/dog.png';
 import imgGato from './../../../Assets/icons/cat.png';
 import leohuella from './../../../Assets/icons/leohuella1.png';
-//import animalPlaceholder from './../../../Assets/img/manada3.jpeg';
+import animalPlaceholder from '../../../Assets/Img/manada3.jpeg';
 
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useContext } from 'react';

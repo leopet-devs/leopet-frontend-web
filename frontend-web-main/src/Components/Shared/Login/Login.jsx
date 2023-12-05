@@ -12,30 +12,29 @@ const Login = ({ history }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const iniciarSesion = () => {
-    setLoading(true);
-    login(
-      {
-        correo,
-        contrasenia,
-      },
-      {
-        apiUrl:
-          window.userSigned?.apiUrl ||
-          GLOBALCONFIG.EndpointBackHost + ':' + GLOBALCONFIG.EndpointBackPort,
-      }
-    )
-      .then((user) => {
-        localStorage.setItem('session', JSON.stringify(user));
-        setLoading(false);
-        window.userSigned = user;
-        history.push('/');
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(err?.message || 'Server Error');
-        setLoading(false);
-      });
+  const iniciarSesion = async() => {
+    try {
+      setLoading(true);
+      let dataLogin = await login(
+        {
+          correo,
+          contrasenia,
+        },
+        {
+          apiUrl:
+            window.userSigned?.apiUrl ||
+            GLOBALCONFIG.EndpointBackHost + ':' + GLOBALCONFIG.EndpointBackPort,
+        }
+      );
+      localStorage.setItem('session', JSON.stringify(dataLogin));
+      setLoading(false);
+      window.userSigned = dataLogin;
+      history.push('/');
+    }catch (err) {
+      console.log(err);
+      setError(err?.message || 'Server Error');
+      setLoading(false);
+  }
   };
 
   const iniciarSesionFacebook = () => {
@@ -112,10 +111,11 @@ const Login = ({ history }) => {
             >
               Ingresar
             </button>
+
             <button
               disabled={loading}
               className="fund-btn fund-btn-gmail"
-              onClick={iniciarSesion}
+              onClick={iniciarSesionFacebook}
             >
               <a className="fund-btn-logo-container">
                 <img
@@ -126,10 +126,11 @@ const Login = ({ history }) => {
               </a>
               <a>Ingresar Con Gmail</a>
             </button>
+
             <button
               disabled={loading}
               className="fund-btn fund-btn-facebook"
-              onClick={iniciarSesion}
+              onClick={iniciarSesionFacebook}
             >
               <a className="fund-btn-logo-container">
                 <img
