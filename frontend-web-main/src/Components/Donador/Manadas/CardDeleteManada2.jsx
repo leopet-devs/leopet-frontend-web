@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { deleteManada } from '../../../Service/Manada';
 export const CardDeleteManada2 = ({ 
   onClose, 
   selectedManada, 
-  deleteManada2 
   }) => {
+    const [isDeleted, setDeleted] = useState(false);
+    const handleDeleteManada = async () => {
+      try {
+        // Ejecutar la función deleteManada con los dos argumentos
+        await deleteManada(selectedManada, {
+          apiUrl: window?.userSigned?.apiUrl,
+          token: window?.userSigned?.token,
+        });
+        await setDeleted(true);
+        console.log(isDeleted)
+        // Cerrar el diálogo/modal después de eliminar la manada
+        onClose();
+        await setDeleted(false);
+      } catch (error) {
+        // Manejar errores, puedes mostrar un mensaje o realizar acciones específicas
+        console.error('Error al eliminar la manada:', error);
+        setError(error.message || 'Error al eliminar la manada.');
+      }
+    };
+
   return (
     <div className="fund-don-dialog">
       <div className="fund-don-dialog-content fund-card">
@@ -24,10 +44,7 @@ export const CardDeleteManada2 = ({
           <div className='form-buttons-2option-cancelar'>
           <button
             className="fund-btn"
-            onClick={() => {
-              deleteManada2(selectedManada);
-              onClose();
-            }}
+            onClick={handleDeleteManada}
           >
             Si
           </button>

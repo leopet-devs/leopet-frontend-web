@@ -56,14 +56,13 @@ export const CardCreate = ({
       });
   };
 
-   const uploadImage = (newImages) => {
+  const uploadImage = (newImages) => {
     setUpdateimages(true);
     console.log(newImages);
     setImages(newImages);
     upload(
       {
-        files: newImages.map((i) =>
-i.file),
+        files: newImages.map((i) =>i.file),
       },
       {
         apiUrl: window?.userSigned?.apiUrl,
@@ -85,7 +84,7 @@ i.file),
         setUpdateimages(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("ERROR uploadImage" + err);
         setUpdateimages(false);
         setImages();
         setError(err.message);
@@ -364,10 +363,9 @@ i.file),
                   value={images}
                   onChange={uploadImage}
                   maxNumber={5}
-                  dataURLKey="data_url"
-                >
+                  dataURLKey="data_url">
                   {({ onImageUpload, isDragging, dragProps }) =>
-    (
+                  (
                     <div
                       className={
                         'fund-upload-photos fund-pointer' +

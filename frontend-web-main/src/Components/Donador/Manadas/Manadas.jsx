@@ -45,12 +45,8 @@ export const Manadas = ({
         {selectedAnimal ? 'Elige una manada' : 'Tus manadas'}
       </div>
 
-      {!manadas?.length ? (
+      {!manadas?(
         <div className="fund-empty fund-txt-12 fund-flx">
-          {/* <img
-            className="fund-img-empty"
-            src="https://www.lagacetadesalamanca.es/binrepository/768x576/0c144/768d432/none/25207907/KBEE/fotonoticia-20160404180800-16041658459-640_1-1658138_20200416161235.jpg"
-          /> */}
           No hay manadas disponibles
           <div className="fund-manada-icons fund-card fund-pointer">
             <i
@@ -173,10 +169,11 @@ export const Manadas = ({
       )}
       {isCreatingManada && (
         <CardCreateManada
+          onClose={setCreatingManada}
           selectedManada={selectedManada}
           createManada={createNewManada}
           updateManada={updateManada}
-          onClose={setCreatingManada}
+          
         />
       )}
       {isDeletingManada && (

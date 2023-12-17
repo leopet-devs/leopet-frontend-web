@@ -25,7 +25,7 @@ export const NavBarLandingPage = () => {
         <Container className="navbarLeopet-container">
           <Nav className="ml-auto">
             <Nav.Link
-              href="/home"
+              href="/Home"
               className="navbarLeopet-link fun-don-barra-items"
             >
               Inicio
@@ -47,7 +47,7 @@ export const NavBarLandingPage = () => {
       </div>
       <div className="flex gap-12 px-4 mx-6">
         <div className="column">
-          <Link to="/login">
+          <Link to="../Login">
             <Button className="navbarLeopet-button-login w-36">Ingresar</Button>
           </Link>
         </div>

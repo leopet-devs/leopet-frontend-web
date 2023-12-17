@@ -48,7 +48,7 @@ export const Fundaciones = ({
           <div className="fund-txt-24 fund-mb-16">
             {selectedManadaToAnimals.nombre}
             <div className="fund-txt-10">
-              <b>Monto: $</b>
+              <b>MontoCoñi: $</b>
               {selectedManadaToAnimals.monto}
             </div>
           </div>

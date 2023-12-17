@@ -19,7 +19,6 @@ const BarraInferior = ({
   updateNotificacion,
 }) => {
   const [isShowNotificacion, setShowNotificacion] = useState(false);
-
   return (
     <div className="fun-don-barra-nav">
       <div className="column">

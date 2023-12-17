@@ -66,7 +66,6 @@ const Login = ({ history }) => {
   return (
     <div className="fund-login">
       <NavBarLandingPage></NavBarLandingPage>
-      {iniciarSesionFacebook}
       <div className="fund-login-container-img">
         <img src={log} />
       </div>

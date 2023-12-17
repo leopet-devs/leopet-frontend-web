@@ -111,7 +111,7 @@ export const Animals = ({
               }}
             >
               <div className="fund-animal">
-                <img className="fund-animal-foto" src={animalPlaceholder} />
+                <img className="fund-animal-foto" src={animal.imagen} />
                 {animal.fundacion_id == 3 && (
                   <div className="fun-leopet">
                     <img className="img-huella" src={leohuella} />
