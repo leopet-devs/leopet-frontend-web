@@ -80,7 +80,7 @@ export const AnimalsDetalle = ({
         <div className="">
           <img
             className="d-block w-80 rounded-xl drop-shadow-xl"
-            src={placeholderFoto}
+            src={selectedAnimal.imagen}
             alt="First slide"
           />
         </div>

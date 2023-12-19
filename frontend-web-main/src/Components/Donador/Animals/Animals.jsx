@@ -1,25 +1,25 @@
-import { useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { CardAnimal } from './CardAnimal';
-import { CardTarjeta } from './cardTarjeta';
-import { CardPayPal } from './CardPayPal';
+import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { CardAnimal } from "./CardAnimal";
+import { CardTarjeta } from "./cardTarjeta";
+import { CardPayPal } from "./CardPayPal";
 
-import { SECCIONES } from './../constantes';
+import { SECCIONES } from "./../constantes";
 
-import { CardCreateManada } from './../Manadas/CardCreateManada';
-import { CardDeleteManada } from './../Manadas/CardDeleteManada';
+import { CardCreateManada } from "./../Manadas/CardCreateManada";
+import { CardDeleteManada } from "./../Manadas/CardDeleteManada";
 
-import './Animals.scss';
+import "./Animals.scss";
 
-import imgPerro from './../../../Assets/icons/dog.png';
-import imgGato from './../../../Assets/icons/cat.png';
-import leohuella from './../../../Assets/icons/leohuella1.png';
-import animalPlaceholder from '../../../Assets/Img/manada3.jpeg';
+import imgPerro from "./../../../Assets/icons/dog.png";
+import imgGato from "./../../../Assets/icons/cat.png";
+import leohuella from "./../../../Assets/icons/leohuella1.png";
+import animalPlaceholder from "../../../Assets/Img/manada3.jpeg";
 
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { useContext } from 'react';
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useContext } from "react";
 
-import Context from '../../../Context';
+import Context from "../../../Context";
 
 export const Animals = ({
   animals,
@@ -46,7 +46,7 @@ export const Animals = ({
 
   const CLIENT_DATA = {
     totalAmount: Number(selectedManadaToAnimals?.monto),
-    clientName: nombres + ' ' + apellidos,
+    clientName: nombres + " " + apellidos,
     clientEmail: email,
     clientNumber: telefono,
   };
@@ -124,11 +124,11 @@ export const Animals = ({
                   <div className="animal-column">
                     <img
                       className="especie-icons "
-                      src={animal.especie == 'Perro' ? imgPerro : imgGato}
+                      src={animal.especie == "Perro" ? imgPerro : imgGato}
                     />
                   </div>
                   <div className="fund-txt-12-green animal-column">
-                    {animal.nombre}{' '}
+                    {animal.nombre}{" "}
                   </div>
                 </div>
                 <div className="animal-row">

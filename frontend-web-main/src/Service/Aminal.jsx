@@ -40,6 +40,39 @@ export async function getAnimals(props, { apiUrl, token }) {
   return result;
 }
 
+
+export async function getOneAnimal(animalId, { apiUrl, token }) {
+  // Construir la URL para obtener un animal específico
+  const url = new URL(`/animal/get/${animalId}`);
+
+  let response;
+
+  try {
+    // Realizar la solicitud al backend utilizando la función getAnimal
+    response = await getAnimal(url, { token });
+  } catch (error) {
+    // Manejar errores de conexión
+    throw new Error('Please check your internet connection and try again');
+  }
+
+  // Manejar redirección si la respuesta es un código 401
+  if (response.status === 401) {
+    window.location.replace('/logout');
+  }
+
+  // Manejar errores en el rango 4xx - 5xx
+  if (response.status >= 400 && response.status < 600) {
+    const { error } = await response.json();
+    throw error;
+  }
+
+  // Extraer y devolver el resultado de la respuesta JSON
+  const { result } = await response.json();
+  return result;
+}
+
+
+
 export async function getSpecies({ apiUrl, token }) {
   const url = new URL(apiUrl);
   url.pathname = '/animal/especies';

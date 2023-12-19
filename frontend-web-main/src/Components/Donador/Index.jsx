@@ -520,7 +520,6 @@ export const Donador = ({ history }) => {
         const result =data.notificaciones.filter( notificacion => 
           notificacion.leido==false
           );
-          console.log(notificaciones);          
           setTotalNotificacionesNoleidas(result.length);          
       })
       .catch((err) => {
