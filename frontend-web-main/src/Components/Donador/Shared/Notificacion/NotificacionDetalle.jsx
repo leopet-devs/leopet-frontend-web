@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //A-//import { SECCIONES } from '../../constantes';
 
@@ -17,7 +17,9 @@ export const NotificacionDetalle = ({
   updateNotificacion,
 }) => {
   const [rate, setRate] = useState(selectedNotificacion.calificacion);
-
+  useEffect(() => {
+    setRate(selectedNotificacion.calificacion);
+  }, [selectedNotificacion]);
   return (
     <div className="fund-don-animals-historial" key={selectedNotificacion.id}>
       <div className="fund-historial-title">
