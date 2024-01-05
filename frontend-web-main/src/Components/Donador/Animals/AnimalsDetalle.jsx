@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import ImageGallery from 'react-image-gallery';
-import moment from 'moment';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
+import ImageGallery from "react-image-gallery";
+import moment from "moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClipboard,
   faBriefcaseMedical,
-} from '@fortawesome/free-solid-svg-icons';
-import { Carousel } from 'react-bootstrap';
+} from "@fortawesome/free-solid-svg-icons";
+import { Carousel } from "react-bootstrap";
 
-import { SECCIONES } from './../constantes';
-import { CardFromDeleteManada } from './../Manadas/CardDeleteFromManada';
+import { SECCIONES } from "./../constantes";
+import { CardFromDeleteManada } from "./../Manadas/CardDeleteFromManada";
 
-import placeholderFoto from '../../../Assets/Img/manada3.jpeg';
+import placeholderFoto from "../../../Assets/Img/manada3.jpeg";
 
-import './AnimalsDetalle.scss';
+import "./AnimalsDetalle.scss";
 
 export const AnimalsDetalle = ({
   selectSection,
@@ -66,24 +66,32 @@ export const AnimalsDetalle = ({
             onClick={() => setDeleting(true)}
           />
         )}
-
-        {/* <div className='icono-manada'>
-          <FontAwesomeIcon icon={faTimes}
-            onClick={() => setDeleting(true)}
-          />
-        </div> */}
       </div>
       <div className="contenedor-animal-detalle">
         <div className="animal-txt-green fund-txt-24">
           {selectedAnimal.nombre}
         </div>
+
         <div className="">
-          <img
-            className="d-block w-80 rounded-xl drop-shadow-xl"
-            src={selectedAnimal.imagen}
-            alt="First slide"
-          />
+          {selectedAnimal.imagen ? (
+            <img
+              className="fund-animal-foto"
+              src={animal.imagen}
+              alt="Imagen del animal"
+            />
+          ) : selectedAnimal.galeria &&
+            selectedAnimal.galeria.fotos &&
+            selectedAnimal.galeria.fotos[0] ? (
+            <img
+              className="fund-animal-foto"
+              src={selectedAnimal.galeria.fotos[0]}
+              alt="Imagen del animal"
+            />
+          ) : (
+            <span>No hay imagen disponible</span>
+          )}
         </div>
+
         <div className="fund-form-buttons">
           <button
             className="fund-btn"
@@ -125,7 +133,7 @@ export const AnimalsDetalle = ({
                 <div className="animal-detalle-row">
                   <div className="etiqueta-txt-14 etiqueta-column">Sexo:</div>
                   <div className="dato-txt-14 dato-column">
-                    {selectedAnimal.sexo ? 'Macho' : 'Hembra'}
+                    {selectedAnimal.sexo ? "Macho" : "Hembra"}
                   </div>
                 </div>
                 <div className="animal-detalle-row">
@@ -164,7 +172,7 @@ export const AnimalsDetalle = ({
                     Esterilización:
                   </div>
                   <div className="dato-txt-14 dato-column">
-                    {selectedAnimal.esterilizacion ? 'Si' : 'No'}
+                    {selectedAnimal.esterilizacion ? "Si" : "No"}
                   </div>
                 </div>
                 <div className="animal-detalle-row">
@@ -172,7 +180,7 @@ export const AnimalsDetalle = ({
                     Vacunación:
                   </div>
                   <div className="dato-txt-14 dato-column">
-                    {selectedAnimal.vacunacion ? 'Si' : 'No'}
+                    {selectedAnimal.vacunacion ? "Si" : "No"}
                   </div>
                 </div>
                 <div className="animal-detalle-row">
@@ -180,7 +188,7 @@ export const AnimalsDetalle = ({
                     Desparasitación:
                   </div>
                   <div className="dato-txt-14 dato-column">
-                    {selectedAnimal.desparasitacion ? 'Si' : 'No'}
+                    {selectedAnimal.desparasitacion ? "Si" : "No"}
                   </div>
                 </div>
                 <div className="animal-detalle-row">
@@ -256,7 +264,7 @@ export const AnimalsDetalle = ({
                       {historia.evidencia.descripcion}
                     </div>
                     <div className="fund-txt-8">
-                      {moment(historia.createdAt).format('DD/MM/YYYY')}
+                      {moment(historia.createdAt).format("DD/MM/YYYY")}
                     </div>
                   </div>
                 </div>
@@ -267,8 +275,8 @@ export const AnimalsDetalle = ({
                   ></i>
                   <i
                     className={
-                      'fas fa-check-circle fund-pointer' +
-                      (historia.aprobado ? ' primary' : '')
+                      "fas fa-check-circle fund-pointer" +
+                      (historia.aprobado ? " primary" : "")
                     }
                     onClick={() => {
                       if (historia.aprobado) {

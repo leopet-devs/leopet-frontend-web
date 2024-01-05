@@ -111,7 +111,24 @@ export const Animals = ({
               }}
             >
               <div className="fund-animal">
-                <img className="fund-animal-foto" src={animal.imagen} />
+                {animal.imagen ? (
+                  <img
+                    className="fund-animal-foto"
+                    src={animal.imagen}
+                    alt="Imagen del animal"
+                  />
+                ) : animal.galeria &&
+                  animal.galeria.fotos &&
+                  animal.galeria.fotos[0] ? (
+                  <img
+                    className="fund-animal-foto"
+                    src={animal.galeria.fotos[0]}
+                    alt="Imagen del animal"
+                  />
+                ) : (
+                  <span>No hay imagen disponible</span>
+                )}
+
                 {animal.fundacion_id == 3 && (
                   <div className="fun-leopet">
                     <img className="img-huella" src={leohuella} />
@@ -124,7 +141,7 @@ export const Animals = ({
                   <div className="animal-column">
                     <img
                       className="especie-icons "
-                      src={animal.especie == "Perro" ? imgPerro : imgGato}
+                      src={animal.especie.toLowerCase() == "perro" ? imgPerro : imgGato}
                     />
                   </div>
                   <div className="fund-txt-12-green animal-column">

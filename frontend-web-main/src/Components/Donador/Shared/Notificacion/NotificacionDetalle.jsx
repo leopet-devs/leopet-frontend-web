@@ -51,25 +51,25 @@ export const NotificacionDetalle = ({
 
               <div className="animal-detalle-carousel">
                 <Carousel className="animal-detalle-carousel-element fund-shadow">
-                  {selectedNotificacion.actualizacion.galeria?.fotos?.map(
-                    (foto, idx) => {
-                      return (
-                        <Carousel.Item key={idx}>
-                          <img
-                            className="d-block w-100"
-                            src={foto}
-                            alt="First slide"
-                          />
-                          <Carousel.Caption>
-                            {/*  <h3>Conoce los Casos</h3>
-                        <p>
-                          Guayaquil, más de 1000 animales de 
-                          compañía extraviados en el 2021.
-                        </p> */}
-                          </Carousel.Caption>
-                        </Carousel.Item>
-                      );
-                    }
+                  {selectedNotificacion.actualizacion.galeria?.fotos?.length ? (
+                    <Carousel>
+                      {selectedNotificacion.actualizacion.galeria.fotos.map(
+                        (foto, idx) => (
+                          <Carousel.Item key={idx}>
+                            <img
+                              className="d-block w-100"
+                              src={foto}
+                              alt={`Slide ${idx + 1}`}
+                            />
+                            <Carousel.Caption>
+                              {/* Tu contenido de la leyenda aquí */}
+                            </Carousel.Caption>
+                          </Carousel.Item>
+                        )
+                      )}
+                    </Carousel>
+                  ) : (
+                    <span>No hay imagen</span>
                   )}
                 </Carousel>
               </div>
@@ -90,26 +90,26 @@ export const NotificacionDetalle = ({
                         const givenRating = index + 1;
                         return (
                           <>
-                              <label key={index}>
-                                <Radio
-                                  type="radio"
-                                  value={givenRating}
-                                  onClick={() => {
-                                    if (
-                                      selectedNotificacion.calificacion == null ||
-                                      selectedNotificacion.calificacion == 0
-                                    )
-                                      setRate(givenRating);
-                                  }}
-                                />
-                                <Rating>
-                                  {givenRating < rate || givenRating === rate ? (
-                                    <FaStar color="#FFC300" />
-                                  ) : (
-                                    <FaStar color="grey" />
-                                  )}
-                                </Rating>
-                              </label>
+                            <label key={index}>
+                              <Radio
+                                type="radio"
+                                value={givenRating}
+                                onClick={() => {
+                                  if (
+                                    selectedNotificacion.calificacion == null ||
+                                    selectedNotificacion.calificacion == 0
+                                  )
+                                    setRate(givenRating);
+                                }}
+                              />
+                              <Rating>
+                                {givenRating < rate || givenRating === rate ? (
+                                  <FaStar color="#FFC300" />
+                                ) : (
+                                  <FaStar color="grey" />
+                                )}
+                              </Rating>
+                            </label>
                           </>
                         );
                       })}
