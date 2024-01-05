@@ -53,7 +53,6 @@ export const Update = ({ setdataMessage, setError }) => {
         setActualizaciones(data.actualizaciones);
         setActualizacionesAll(data.actualizaciones);
         setTotalRows(data.totalRows);
-        console.log(data.actualizaciones);
       })
       .catch((err) => {
         console.log(err);

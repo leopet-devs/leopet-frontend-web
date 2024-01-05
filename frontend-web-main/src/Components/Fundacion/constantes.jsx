@@ -25,6 +25,7 @@ export const SECCIONES = [
     className: 'fas fa-file',
    /*Atributo  oculto: true, */
     component: Cuenta,
+    bancos: ["Pichincha", "Pacifico"]
   },
   {
     id: 3,

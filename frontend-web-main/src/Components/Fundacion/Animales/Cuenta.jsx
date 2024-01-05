@@ -55,7 +55,6 @@ export const Cuenta = ({ setdataMessage, setError }) => {
     )
       .then((data) => {
         setLoading(false);
-        console.log(data.cuentas);
         setCuentas(data.cuentas);
         setTotalRows(data.totalRows);
             

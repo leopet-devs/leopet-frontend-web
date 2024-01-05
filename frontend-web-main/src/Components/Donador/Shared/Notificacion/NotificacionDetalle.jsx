@@ -17,6 +17,7 @@ export const NotificacionDetalle = ({
   updateNotificacion,
 }) => {
   const [rate, setRate] = useState(selectedNotificacion.calificacion);
+
   return (
     <div className="fund-don-animals-historial" key={selectedNotificacion.id}>
       <div className="fund-historial-title">
@@ -87,26 +88,26 @@ export const NotificacionDetalle = ({
                         const givenRating = index + 1;
                         return (
                           <>
-                            <label key={index}>
-                              <Radio
-                                type="radio"
-                                value={givenRating}
-                                onClick={() => {
-                                  if (
-                                    selectedNotificacion.calificacion == null ||
-                                    selectedNotificacion.calificacion == 0
-                                  )
-                                    setRate(givenRating);
-                                }}
-                              />
-                              <Rating>
-                                {givenRating < rate || givenRating === rate ? (
-                                  <FaStar color="#FFC300" />
-                                ) : (
-                                  <FaStar color="grey" />
-                                )}
-                              </Rating>
-                            </label>
+                              <label key={index}>
+                                <Radio
+                                  type="radio"
+                                  value={givenRating}
+                                  onClick={() => {
+                                    if (
+                                      selectedNotificacion.calificacion == null ||
+                                      selectedNotificacion.calificacion == 0
+                                    )
+                                      setRate(givenRating);
+                                  }}
+                                />
+                                <Rating>
+                                  {givenRating < rate || givenRating === rate ? (
+                                    <FaStar color="#FFC300" />
+                                  ) : (
+                                    <FaStar color="grey" />
+                                  )}
+                                </Rating>
+                              </label>
                           </>
                         );
                       })}

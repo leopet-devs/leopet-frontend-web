@@ -8,13 +8,14 @@ import './Notificacion.scss';
 
 export const NotificacionModal = ({  
   setShowNotificacion, 
-   notificaciones,  
+  notificaciones,  
   selectSection,  
   selectNotificacion, 
   //A-//loadNotificaciones, 
   updateNotificacion, 
+  setNotification
 }) => {
-
+  console.log(notificaciones)
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true); 
 
@@ -85,7 +86,8 @@ export const NotificacionModal = ({
                   <div className="noti-column">
                     <img
                       className="noti-especie-icons "
-                      src={notificacion.animal.especie == 'Perro' ? imgPerro : imgGato} />
+                      src={notificacion.animal.especie.toLowerCase() === 'perro' ? imgPerro : imgGato}
+ />
 
                   </div>
                   <div className="noti-txt-10-green noti-animal-column">{notificacion.animal.nombre} </div> 
