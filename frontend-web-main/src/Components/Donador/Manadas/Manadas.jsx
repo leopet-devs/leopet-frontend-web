@@ -114,9 +114,9 @@ export const Manadas = ({
                   }}
                 >
                   {manada.galeriamanada == null ? (
-                    <img className="" src={imanada3} />
+                    <img className="img-foto-manada" src={imanada3} />
                   ) : (
-                    <img className="" src={manada.galeriamanada.fotos[0]} />
+                    <img className="img-foto-manada" src={manada.galeriamanada.fotos[0]} />
                   )}
                 </div>
 

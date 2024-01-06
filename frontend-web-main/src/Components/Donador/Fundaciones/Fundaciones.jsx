@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { CardAnimal } from './../Animals/CardAnimal';
-import { SECCIONES } from './../constantes';
+import React, { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { CardAnimal } from "./../Animals/CardAnimal";
+import { SECCIONES } from "./../constantes";
 
-import { CardCreateManada } from './../Manadas/CardCreateManada';
-import { CardDeleteManada } from './../Manadas/CardDeleteManada';
+import { CardCreateManada } from "./../Manadas/CardCreateManada";
+import { CardDeleteManada } from "./../Manadas/CardDeleteManada";
 
-import './Fundaciones.scss';
+import "./Fundaciones.scss";
 
-//Import imgPerro from './../../../Assets/icons/dog.png';
+import imgPerro from "./../../../Assets/icons/dog.png";
 //Import imgGato from './../../../Assets/icons/cat.png';
 //Import leohuella from './../../../Assets/icons/leohuella1.png';
-import paw from './../../../Assets/icons/paw.png';
-import leopetLogo from './../../../Assets/Img/leopetLogo.png';
+import paw from "./../../../Assets/icons/paw.png";
+import leopetLogo from "./../../../Assets/Img/leopetLogo.png";
 
 export const Fundaciones = ({
   animals,
@@ -41,6 +41,8 @@ export const Fundaciones = ({
     });
   };
 
+  console.log(fundaciones);
+
   return (
     <div className="fund-don-animals-content px-8">
       {selectedManadaToAnimals && (
@@ -55,10 +57,10 @@ export const Fundaciones = ({
           <div className="fund-flx-c">
             <i
               className={
-                'fas fa-trash-alt fund-mr-8 fund-pointer ' +
+                "fas fa-trash-alt fund-mr-8 fund-pointer " +
                 (selectedManadaToAnimals.statusSubscription
-                  ? ''
-                  : 'fund-opaque')
+                  ? ""
+                  : "fund-opaque")
               }
               disabled={!selectedManadaToAnimals.statusSubscription}
               onClick={() => setDeletingManada(true)}
@@ -73,8 +75,8 @@ export const Fundaciones = ({
               }
             >
               {selectedManadaToAnimals.statusSubscription
-                ? 'Desactivar'
-                : 'Donar'}
+                ? "Desactivar"
+                : "Donar"}
             </button>
           </div>
         </div>
@@ -88,16 +90,7 @@ export const Fundaciones = ({
           No hay Animales disponibles
         </div>
       ) : (
-        <InfiniteScroll
-          dataLength={animals?.length || 0}
-          next={fetchMoreData}
-          hasMore={hasMore}
-          loader={
-            <div className="fund-loading-cards fund-flx-c fund-full">
-              <i className="fad fa-spinner fund-spin" />
-            </div>
-          }
-        >
+        <InfiniteScroll dataLength={animals?.length || 0}>
           {fundaciones?.map((fundacion, idx) => (
             <div
               className="fund-animal fund-card fund-pointer"
@@ -108,14 +101,13 @@ export const Fundaciones = ({
                 selectSection(SECCIONES[6]);
               }}
             >
-              {/* <img
-                className="fund-animal-foto"
-                src={animal?.galeria?.fotos[0]}
-              /> */}
               <div className="fund-fundacion">
                 <img
                   className="fund-logo-foto"
-                  src={fundacion.id == 3 ? leopetLogo : fundacion.logo}
+                  src={
+                    fundacion.id === 3 ? leopetLogo : fundacion.logo || imgPerro
+                  }
+                  alt="Logo de la fundación"
                 />
               </div>
 
@@ -125,7 +117,7 @@ export const Fundaciones = ({
                     <img className="especie-icons " src={paw} />
                   </div>
                   <div className="fund-txt-12-green animal-column">
-                    {fundacion.nombre}{' '}
+                    {fundacion.nombre}
                   </div>
                 </div>
                 <div className="animal-row">
