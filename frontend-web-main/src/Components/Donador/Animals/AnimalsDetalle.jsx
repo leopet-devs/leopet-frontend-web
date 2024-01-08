@@ -76,7 +76,7 @@ export const AnimalsDetalle = ({
           {selectedAnimal.imagen ? (
             <img
               className="fund-animal-foto"
-              src={animal.imagen}
+              src={selectedAnimal.imagen}
               alt="Imagen del animal"
             />
           ) : selectedAnimal.galeria &&
