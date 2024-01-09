@@ -45,7 +45,6 @@ const BarraInferior = ({
               key={idx}
               className={
                 'fun-don-barra-items ' +
-                //'fund-don-barra-item fund-txt-12 fund-pointer ' +
                 (selectedSection.id == section.id ? 'selected' : '')
               }
               onClick={() => {
@@ -70,18 +69,14 @@ const BarraInferior = ({
             className="fas fa-bell fund-mr-8 fund-pointer "
             data-count={totalNotificacionesNoleidas}
             onClick={() => {
-              //A--selectSection(SECCIONES[7]);
               setShowNotificacion(!isShowNotificacion);
-              //A-//selectSection(SECCIONES[8]);
             }}
           />
         ) : (
           <i
             className="fas fa-bell fund-mr-8 fund-pointer "
             onClick={() => {
-              //A--selectSection(SECCIONES[7]);
               setShowNotificacion(!isShowNotificacion);
-              //A-//selectSection(SECCIONES[8]);
             }}
           />
         )}

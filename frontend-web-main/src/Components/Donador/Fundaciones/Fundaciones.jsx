@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { CardAnimal } from "./../Animals/CardAnimal";
 import { SECCIONES } from "./../constantes";
 
+import { CardAnimal } from "./../Animals/CardAnimal";
 import { CardCreateManada } from "./../Manadas/CardCreateManada";
 import { CardDeleteManada } from "./../Manadas/CardDeleteManada";
 
-import "./Fundaciones.scss";
-
-import imgPerro from "./../../../Assets/icons/dog.png";
-//Import imgGato from './../../../Assets/icons/cat.png';
-//Import leohuella from './../../../Assets/icons/leohuella1.png';
+import fundacionDefault from "./../../../Assets/icons/fundacionDefault.jpg";
 import paw from "./../../../Assets/icons/paw.png";
 import leopetLogo from "./../../../Assets/Img/leopetLogo.png";
+
+import "./Fundaciones.scss";
 
 export const Fundaciones = ({
   animals,
@@ -40,8 +38,6 @@ export const Fundaciones = ({
       setPage(page + (more ? 1 : 0));
     });
   };
-
-  console.log(fundaciones);
 
   return (
     <div className="fund-don-animals-content px-8">
@@ -90,7 +86,16 @@ export const Fundaciones = ({
           No hay Animales disponibles
         </div>
       ) : (
-        <InfiniteScroll dataLength={animals?.length || 0}>
+        <InfiniteScroll
+          dataLength={animals?.length || 0}
+          next={fetchMoreData}
+          hasMore={hasMore}
+          loader={
+            <div className="fund-loading-cards fund-flx-c fund-full">
+              <i className="fad fa-spinner fund-spin" />
+            </div>
+          }
+        >
           {fundaciones?.map((fundacion, idx) => (
             <div
               className="fund-animal fund-card fund-pointer"
@@ -105,7 +110,7 @@ export const Fundaciones = ({
                 <img
                   className="fund-logo-foto"
                   src={
-                    fundacion.id === 3 ? leopetLogo : fundacion.logo || imgPerro
+                    fundacion.id === 3 ? leopetLogo : fundacion.logo || fundacionDefault
                   }
                   alt="Logo de la fundación"
                 />

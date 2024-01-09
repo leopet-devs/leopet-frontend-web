@@ -8,18 +8,16 @@ import { SECCIONES } from "./../constantes";
 
 import { CardCreateManada } from "./../Manadas/CardCreateManada";
 import { CardDeleteManada } from "./../Manadas/CardDeleteManada";
-
-import "./Animals.scss";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useContext } from "react";
+import Context from "../../../Context";
 
 import imgPerro from "./../../../Assets/icons/dog.png";
 import imgGato from "./../../../Assets/icons/cat.png";
 import leohuella from "./../../../Assets/icons/leohuella1.png";
-import animalPlaceholder from "../../../Assets/Img/manada3.jpeg";
+import perroEmoji from "./../../../Assets/Img/perroEmoji.png";
 
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { useContext } from "react";
-
-import Context from "../../../Context";
+import "./Animals.scss";
 
 export const Animals = ({
   animals,
@@ -126,7 +124,11 @@ export const Animals = ({
                     alt="Imagen del animal"
                   />
                 ) : (
-                  <span>No hay imagen disponible</span>
+                  <img
+                    className="fund-animal-foto"
+                    src={perroEmoji}
+                    alt="Imagen del animal"
+                  />
                 )}
 
                 {animal.fundacion_id == 3 && (
@@ -141,7 +143,11 @@ export const Animals = ({
                   <div className="animal-column">
                     <img
                       className="especie-icons "
-                      src={animal.especie.toLowerCase() == "perro" ? imgPerro : imgGato}
+                      src={
+                        animal.especie.toLowerCase() == "perro"
+                          ? imgPerro
+                          : imgGato
+                      }
                     />
                   </div>
                   <div className="fund-txt-12-green animal-column">
