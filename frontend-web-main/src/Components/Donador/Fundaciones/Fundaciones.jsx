@@ -77,7 +77,7 @@ export const Fundaciones = ({
           </div>
         </div>
       )}
-      {!animals?.length ? (
+      {!fundaciones?.length ? (
         <div className="fund-empty fund-txt-12 fund-flx">
           <img
             className="fund-img-empty"
@@ -87,7 +87,7 @@ export const Fundaciones = ({
         </div>
       ) : (
         <InfiniteScroll
-          dataLength={animals?.length || 0}
+          dataLength={fundaciones?.length || 0}
           next={fetchMoreData}
           hasMore={hasMore}
           loader={
