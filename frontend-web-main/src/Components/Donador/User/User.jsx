@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import ima from './../../../Assets/Img/ima_registro.png';
-import { register } from './../../../Service/User';
-import { Password } from '../../Shared/Password';
-import { CardMessage } from './../Shared/CardMessage';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState, useEffect } from "react";
+import ima from "./../../../Assets/Img/ima_registro.png";
+import { register } from "./../../../Service/User";
+import { Password } from "../../Shared/Password";
+import { CardMessage } from "./../Shared/CardMessage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
   faIdCard,
   faUser,
   faPhone,
   faLock,
-} from '@fortawesome/free-solid-svg-icons';
-import './User.scss';
-import { GLOBALCONFIG } from '../../Config';
+} from "@fortawesome/free-solid-svg-icons";
+import "./User.scss";
+import { GLOBALCONFIG } from "../../Config";
 
 export const User = ({ selectedUser, logout, editUser, history }) => {
   const [user, setUser] = useState(selectedUser || {});
@@ -37,20 +37,20 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
       {
         apiUrl:
           window.userSigned?.apiUrl ||
-          GLOBALCONFIG.EndpointBackHost + ':' + GLOBALCONFIG.EndpointBackPort,
+          GLOBALCONFIG.EndpointBackHost + ":" + GLOBALCONFIG.EndpointBackPort,
       }
     )
       .then(() => {
         setLoading(false);
         setdataMessage({
-          title: 'Registro',
-          message: 'Registro exitoso',
+          title: "Registro",
+          message: "Registro exitoso",
         });
-        history.push('/login');
+        history.push("/login");
       })
       .catch((err) => {
         console.log(err);
-        setError(err?.message || 'Server Error');
+        setError(err?.message || "Server Error");
         setLoading(false);
       });
   };
@@ -69,7 +69,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
     <div>
       <div
         className={
-          'fund-don-user-content' + (!selectedUser ? ' fund-mt-32' : '')
+          "fund-don-user-content" + (!selectedUser ? " fund-mt-32" : "")
         }
       >
         {dataMessage && (
@@ -90,7 +90,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
             {error}
             <button
               className="fund-btn fund-mt-16"
-              onClick={() => window.location.replace('')}
+              onClick={() => window.location.replace("")}
             >
               Recargar
             </button>
@@ -99,15 +99,6 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
         {!isLoading && !error && (
           <div className="form-registro">
             <div className="form-registro-container-form">
-              <div className="fund-title">
-                <div className="fund-txt-24 fund-mb-16 fund-flx-b">
-                  {user?.id ? 'Perfil' : 'Registro'}
-                </div>
-                {selectedUser && (
-                  <i className="fas fa-sign-out-alt" onClick={logout} />
-                )}
-              </div>
-
               <div className="fund-form-field">
                 <span className="fund-txt-12 titulo-negrita">Correo</span>
                 <div className="seccion-detalle-row">
@@ -115,7 +106,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
                     <FontAwesomeIcon icon={faEnvelope} color="#028596" />
                   </div>
                   <input
-                    value={user.email || ''}
+                    value={user.email || ""}
                     type="text"
                     placeholder="ingrese su correo electrónico"
                     onChange={(e) => {
@@ -134,7 +125,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
                     <FontAwesomeIcon icon={faIdCard} color="#028596" />
                   </div>
                   <input
-                    value={user.cedula || ''}
+                    value={user.cedula || ""}
                     type="number"
                     placeholder="Ingrese su número de cedula"
                     onChange={(e) => {
@@ -153,7 +144,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
                     <FontAwesomeIcon icon={faUser} color="#028596" />
                   </div>
                   <input
-                    value={user.nombres || ''}
+                    value={user.nombres || ""}
                     type="text"
                     placeholder="Ingrese sus nombres"
                     maxLength={20}
@@ -173,7 +164,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
                     <FontAwesomeIcon icon={faUser} color="#028596" />
                   </div>
                   <input
-                    value={user.apellidos || ''}
+                    value={user.apellidos || ""}
                     type="text"
                     placeholder="Ingrese sus apellidos"
                     maxLength={20}
@@ -193,7 +184,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
                     <FontAwesomeIcon icon={faPhone} color="#028596" />
                   </div>
                   <input
-                    value={user.telefono || ''}
+                    value={user.telefono || ""}
                     type="number"
                     placeholder="Ingrese su número de teléfono"
                     onChange={(e) => {
@@ -214,7 +205,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
                       <FontAwesomeIcon icon={faLock} color="#028596" />
                     </div>
                     <input
-                      value={user.password || ''}
+                      value={user.password || ""}
                       type="password"
                       placeholder="Ingrese una contraseña"
                       maxLength={20}
@@ -249,7 +240,7 @@ export const User = ({ selectedUser, logout, editUser, history }) => {
                   }}
                   disabled={!valid()}
                 >
-                  {selectedUser ? 'Guardar' : 'Registrarse'}
+                  {selectedUser ? "Guardar" : "Registrarse"}
                 </button>
               </div>
             </div>

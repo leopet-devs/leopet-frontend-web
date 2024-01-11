@@ -16,6 +16,9 @@
   font: bold .4em sans-serif;
 }
 
+.column{
+  margin-right: 10px;
+}
 
 .fund-don-barra-inferior {
   position: fixed;
@@ -206,11 +209,11 @@ i{
 
 .fun-don-barra-nav{
   background-color: #f08e86;
-  height: 64px;
-  width: 100%;
+  height: 60px;
+  width: auto;
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content:center;
   align-items: center;
 
 }
@@ -218,14 +221,15 @@ i{
 .barra-items{
   display: flex;
   flex-direction:row;
-  width: 1550px;
+  justify-content: center;
+  width: 1000px;
   //background-color: blue;
   .fun-don-barra-items{
     display: flex;
     flex-direction: column;
-    justify-content:flex-start;
-    align-items: flex-start;
-    width: 120px;
+    justify-content:center;
+    align-items: center;
+    width: 1000px;
     margin-left: 0px;
     margin-right: 10px;
     font-size: 18px;
@@ -263,7 +267,7 @@ i{
 .column{
   display: flex;
   flex-direction: column;
-  width: 100px;
+  width: auto;
 
 }
 

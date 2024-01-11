@@ -88,13 +88,6 @@ export const Fundaciones = ({
       ) : (
         <InfiniteScroll
           dataLength={fundaciones?.length || 0}
-          next={fetchMoreData}
-          hasMore={hasMore}
-          loader={
-            <div className="fund-loading-cards fund-flx-c fund-full">
-              <i className="fad fa-spinner fund-spin" />
-            </div>
-          }
         >
           {fundaciones?.map((fundacion, idx) => (
             <div

@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-//A-//import { SECCIONES } from '../../constantes';
-
 import { FaStar } from "react-icons/fa";
 import { Container, Radio, Rating } from "./RatingStyles";
 import imanada from "./../../../../Assets/icons/pawfill.png";
-
 import { Carousel } from "react-bootstrap";
 
 import "../../Animals/AnimalsDetalle.scss";
-
+import "./Notificacion.scss";
 export const NotificacionDetalle = ({
-  //A-//selectSection,
-  //A-//selectNotificacion,
   selectedNotificacion,
   updateNotificacion,
 }) => {
@@ -20,19 +15,11 @@ export const NotificacionDetalle = ({
   useEffect(() => {
     setRate(selectedNotificacion.calificacion);
   }, [selectedNotificacion]);
+
   return (
     <div className="fund-don-animals-historial" key={selectedNotificacion.id}>
       <div className="fund-historial-title">
-        <div className="fund-return fund-flx">
-          {/*  <i
-            className="fas fa-arrow-alt-circle-left fund-mr-8 fund-pointer"
-            onClick={() => {
-              selectNotificacion();
-              selectSection(SECCIONES[8]);
-            }}
-          /> */}
-          <div className="fund-txt-24 fund-mb-16">Detalle de Notificación</div>
-        </div>
+        <div className="fund-txt-24 fund-mb-16">Detalle de Notificación</div>
       </div>
 
       <div className="contenedor-animal-detalle">
@@ -43,35 +30,24 @@ export const NotificacionDetalle = ({
         <div className="fund-ml-8">
           <div className="detalle-row">
             <div className="detalle-column">
-              <div className="seccion-detalle-row">
-                {/* <div className='icono-seccion'>
-                <FontAwesomeIcon 
-                icon={faBriefcaseMedical} /></div> */}
-              </div>
-
               <div className="animal-detalle-carousel">
-                <Carousel className="animal-detalle-carousel-element fund-shadow">
-                  {selectedNotificacion.actualizacion.galeria?.fotos?.length ? (
-                    <Carousel>
-                      {selectedNotificacion.actualizacion.galeria.fotos.map(
-                        (foto, idx) => (
-                          <Carousel.Item key={idx}>
-                            <img
-                              className="d-block w-100"
-                              src={foto}
-                              alt={`Slide ${idx + 1}`}
-                            />
-                            <Carousel.Caption>
-                              {/* Tu contenido de la leyenda aquí */}
-                            </Carousel.Caption>
-                          </Carousel.Item>
-                        )
-                      )}
-                    </Carousel>
-                  ) : (
-                    <span>No hay imagen</span>
-                  )}
-                </Carousel>
+                {selectedNotificacion.actualizacion.galeria?.fotos?.length ? (
+                  <Carousel className="animal-detalle-carousel-element fund-shadow">
+                    {selectedNotificacion.actualizacion.galeria.fotos.map(
+                      (foto, idx) => (
+                        <Carousel.Item key={idx}>
+                          <img
+                            className="d-block w-100"
+                            src={foto}
+                            alt={`Slide ${idx + 1}`}
+                          />
+                        </Carousel.Item>
+                      )
+                    )}
+                  </Carousel>
+                ) : (
+                  <span>No hay imagen</span>
+                )}
               </div>
 
               <div className="info-detalle-column-estrellas fund-shadow">

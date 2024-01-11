@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import ImageUploading from 'react-images-uploading';
-import { uploadPhoto as upload,
-           deletePhoto } from '../../../Service/Actualizacion';
-import './UpdateCreate.scss';
+import React, { useState } from "react";
+import ImageUploading from "react-images-uploading";
+import {
+  uploadPhoto as upload,
+  deletePhoto,
+} from "../../../Service/Actualizacion";
+import "./UpdateCreate.scss";
 
 export const UpdateCreate = ({
   selectedAnimal,
@@ -11,50 +13,33 @@ export const UpdateCreate = ({
   createActualizacion,
   onClose,
 }) => {
-
-  const [actualizacion, setActualizacion] =
-  useState(selectedActualizacion || {});
+  const [actualizacion, setActualizacion] = useState(
+    selectedActualizacion || {}
+  );
   const [images, setImages] = useState([]);
   const [isUpdateimages, setUpdateimages] = useState();
   //A-const [animal, setanimal] = useState({});
+  console.log(isUpdateimages);
 
   const isInvalid = () => {
     return (
       !actualizacion.descripcion ||
-      !(actualizacion.descripcion.length>2) ||
+      !(actualizacion.descripcion.length > 2) ||
       !actualizacion.estado_salud ||
-      !(actualizacion.estado_salud.length>2)
+      !(actualizacion.estado_salud.length > 2) ||
+      isUpdateimages === undefined
     );
   };
 
-  /*A- const handleFileChange = (e) => {
-    const file=e.target.files[0];
-      if ( file != null ) {
-      const img = {
-        preview: URL.createObjectURL(file),
-        data: file,
-      };
-      setImages([...images, img]);
-    }
-  };
-
-  const eliminarImagen = (imagen) => {
-    var newArray = images.filter((item) =>
-        item.data.name !== imagen.data.name);
-    setImages(newArray);
-  }; */
 
   const deleteImage = (imagen) => {
-    console.log(imagen);
-     deletePhoto(
-      imagen,
-      {
-        apiUrl: window?.userSigned?.apiUrl,
-        token: window?.userSigned?.token,
-      }
-    )
+    deletePhoto(imagen, {
+      apiUrl: window?.userSigned?.apiUrl,
+      token: window?.userSigned?.token,
+    })
       .then((data) => {
-        console.log( data);
+        console.log(data);
+        setUpdateimages(undefined)
       })
       .catch((err) => {
         console.log(err);
@@ -68,8 +53,7 @@ export const UpdateCreate = ({
     setImages(newImages);
     upload(
       {
-        files: newImages.map((i) =>
-i.file),
+        files: newImages.map((i) => i.file),
       },
       {
         apiUrl: window?.userSigned?.apiUrl,
@@ -83,14 +67,13 @@ i.file),
         if (!actualizacion.galeria.fotos) {
           actualizacion.galeria.fotos = [];
         }
-        actualizacion.galeria.fotos =
-        [...actualizacion.galeria.fotos, ...data];
+        actualizacion.galeria.fotos = [...actualizacion.galeria.fotos, ...data];
         setActualizacion({
           ...actualizacion,
         });
-        console.log('Inicia');
+        console.log("Inicia");
         console.log(actualizacion);
-        console.log('Fin');
+        console.log("Fin");
         setImages();
         setUpdateimages(false);
       })
@@ -106,13 +89,14 @@ i.file),
     <div className="fund-don-dialog">
       <div className="fund-don-dialog-content fund-card fund-create-animal">
         <div className="fund-txt-24 fund-mb-16">
-        {selectedActualizacion ? 'Editar' : 'Crear'} Actualización de {selectedAnimal.nombre }
+          {selectedActualizacion ? "Editar" : "Crear"} Actualización de{" "}
+          {selectedAnimal.nombre}
         </div>
 
         <div className="fund-form-field">
           <span className="fund-txt-14 titulo-negrita">Descripcion</span>
           <input
-            value={actualizacion.descripcion || ''}
+            value={actualizacion.descripcion || ""}
             type="text"
             onChange={(e) => {
               setActualizacion({
@@ -126,7 +110,7 @@ i.file),
         <div className="fund-form-field">
           <span className="fund-txt-14 titulo-negrita">Estado de Salud</span>
           <input
-            value={actualizacion.estado_salud ||''}
+            value={actualizacion.estado_salud || ""}
             type="text"
             onChange={(e) => {
               setActualizacion({
@@ -137,27 +121,7 @@ i.file),
           />
         </div>
 
-        {/* <div className="fund-form-field" >
-          <span className="fund-txt-12">Foto</span>
-          {images?.map((imagen, idx) => {
-             console.log(imagen);
-              return (
-                <div key={idx} className="fund-table-row">
-                  <div className="fund-table-cell fund-txt-12"
-                   onClick={() => {
-                    eliminarImagen(imagen)  ;
-                  }} >
-                   <img src={imagen.preview} width='100' height='100'/>
-                   </div>
-                </div>
-              );
-            })}
-
-
-          <input type='file' name='file' onChange={handleFileChange}>
-          </input>
-        </div> */}
-         <div className="fund-form-field">
+        <div className="fund-form-field">
           <span className="fund-txt-14 titulo-negrita">Fotos</span>
           <div className="fund-gallery">
             {actualizacion?.galeria?.fotos?.map((foto, idx) => {
@@ -173,9 +137,7 @@ i.file),
                     className="fad fa-trash primary fund-pointer"
                     onClick={() => {
                       actualizacion.galeria.fotos =
-                        actualizacion.galeria.fotos.filter(
-                        (f, i) =>
-                        i !== idx );
+                        actualizacion.galeria.fotos.filter((f, i) => i !== idx);
                       deleteImage(foto);
                       setActualizacion({
                         ...actualizacion,
@@ -185,7 +147,7 @@ i.file),
                 </div>
               );
             })}
-             {images?.map((foto, idx) => {
+            {images?.map((foto, idx) => {
               return (
                 <div
                   className="fund-gallery-photo uploading fund-flx-c"
@@ -198,35 +160,34 @@ i.file),
                 </div>
               );
             })}
-             <ImageUploading
+            <ImageUploading
               multiple
               value={images}
               onChange={uploadImage}
               maxNumber={5}
               dataURLKey="data_url"
             >
-              {({ onImageUpload, isDragging, dragProps }) =>
-(
+              {({ onImageUpload, isDragging, dragProps }) => (
                 <div
                   className={
-                    'fund-upload-photos fund-pointer' +
-                    (isUpdateimages ? ' fund-opaque' : '')
+                    "fund-upload-photos fund-pointer" +
+                    (isUpdateimages ? " fund-opaque" : "")
                   }
                   style={
                     isDragging
-                      ? { border: '1px dashed var(--primary-color)' }
+                      ? { border: "1px dashed var(--primary-color)" }
                       : undefined
                   }
                   onClick={onImageUpload}
                   {...dragProps}
                 >
                   <i
-                    className={'fas fa-plus' + (isDragging ? ' primary' : '')}
+                    className={"fas fa-plus" + (isDragging ? " primary" : "")}
                   />
                   <span
                     className="fund-txt-10"
                     style={
-                      isDragging ? { color: 'var(--primary-color)' } : undefined
+                      isDragging ? { color: "var(--primary-color)" } : undefined
                     }
                   >
                     Click o arrastre
@@ -238,28 +199,26 @@ i.file),
         </div>
 
         <div className="form-buttons-2option">
-        <div>
-
-          <button
-            className="fund-btn"
-            disabled={isInvalid()}
-            onClick={() => {
-              if (actualizacion.id) {
-                updateActualizacion(actualizacion);
-              } else {
-                createActualizacion(actualizacion);
-              }
-              onClose();
-            }}
-          >
-         {actualizacion.id ? 'Guadar' : 'Crear'}
-          </button>
+          <div>
+            <button
+              className="fund-btn"
+              disabled={isInvalid()}
+              onClick={() => {
+                if (actualizacion.id) {
+                  updateActualizacion(actualizacion);
+                } else {
+                  createActualizacion(actualizacion);
+                }
+                onClose();
+              }}
+            >
+              {actualizacion.id ? "Guadar" : "Crear"}
+            </button>
           </div>
-          <div className='form-buttons-2option-cancelar'>
-          <button className="fund-btn" onClick={() =>
-              onClose()}>
-            Cancelar
-          </button>
+          <div className="form-buttons-2option-cancelar">
+            <button className="fund-btn" onClick={() => onClose()}>
+              Cancelar
+            </button>
           </div>
         </div>
       </div>
