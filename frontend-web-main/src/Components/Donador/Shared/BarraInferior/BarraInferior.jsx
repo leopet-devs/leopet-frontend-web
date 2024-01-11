@@ -82,11 +82,14 @@ const BarraInferior = ({
         )}
       </div>
 
-      <Link to="home">
-        <button className="bg-primary px-8 py-2 rounded-lg mx-8 text-white font-bold">
-          Salir
-        </button>
-      </Link>
+      <div className="bg-primary-button">
+        <Link to="home">
+          <button className="bg-primary px-8 py-2 rounded-lg mx-8 text-white font-bold">
+            Salir
+          </button>
+        </Link>
+      </div>
+      
 
       {isShowNotificacion && (
         <NotificacionModal
