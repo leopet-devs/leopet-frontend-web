@@ -58,13 +58,6 @@ export const Manadas = ({
       ) : (
         <InfiniteScroll
           dataLength={manadas?.length || 0}
-          next={fetchMoreData}
-          hasMore={hasMore}
-          loader={
-            <div className="fund-loading-cards fund-flx-c fund-full">
-              <i className="fad fa-spinner fund-spin" />
-            </div>
-          }
         >
           <div className="fund-manada-icons fund-card fund-pointer">
             <i
