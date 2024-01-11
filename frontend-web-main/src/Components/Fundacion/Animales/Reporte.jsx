@@ -85,9 +85,7 @@ export const Reporte = ({ setError }) => {
           <div className="fund-table-row-header">            
           <div className="fund-table-cell txt-12-white">#</div>
             <div className="fund-table-cell txt-12-white">ANIMAL</div>
-            <div className="fund-table-cell txt-12-white">ESPECIE</div>
-            <div className="fund-table-cell txt-12-white">PADRINO</div>
-            <div className="fund-table-cell txt-12-white">MANADA</div>
+            <div className="fund-table-cell txt-12-white">ESPECIE</div>            
             <div className="fund-table-cell txt-12-white">MONTO</div>
           </div>
           {!isLoading &&
@@ -102,13 +100,7 @@ export const Reporte = ({ setError }) => {
                   </div>
                   <div className="fund-table-cell fund-txt-14">
                     {animal.especie}                    
-                  </div>
-                  <div className="fund-table-cell fund-txt-14">                    
-                    {animal.padrinoNombre+' '+animal.padrinoApellido}
-                  </div>
-                  <div className="fund-table-cell fund-txt-14">
-                    {animal.manadaNombre}
-                  </div> 
+                  </div>                 
                   <div className="fund-table-cell fund-txt-14">
                     $ {animal.monto}
                   </div>                   
